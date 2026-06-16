@@ -1,6 +1,7 @@
 ---
 name: cmc-skillhub-composer
 description: Discovers and runs CMC Crypto Skill Hub services through its MCP server (find_skill, execute_skill) and renders clean, chat-ready Markdown research. Use for crypto market and BTC/ETH analysis, ETF flows, onchain token and memecoin scans, derivatives and perp positioning, liquidations, portfolio exposure and PnL attribution, trading-cost comparison, crypto macro regime, and how BTC and crypto trade versus equities, DXY, gold, and rates. Not for standalone non-crypto questions.
+license: Apache-2.0
 ---
 
 # CMC Crypto Skill Hub

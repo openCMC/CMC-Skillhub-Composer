@@ -121,3 +121,7 @@ fi
 mkdir -p "$install_dir"
 cp -R "$tmp_dir/cmc-skillhub-composer/." "$install_dir/"
 ```
+
+## License
+
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE) for details. The skill bundle in `cmc-skillhub-composer/` carries its own copy of the license so it stays licensed when installed standalone.
