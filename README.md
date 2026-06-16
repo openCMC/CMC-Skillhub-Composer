@@ -30,12 +30,19 @@ The directory name matches the `name` field in `SKILL.md`.
 
 ## Compatibility
 
-This skill is compatible with Codex and Claude Code skill layouts when installed as the `cmc-skillhub-composer` skill directory.
+This is a standard `SKILL.md` bundle. It works with any host that supports installable agent skills. Install it as the `cmc-skillhub-composer` directory in the host's skills location:
 
 | Host | Install path |
 |---|---|
-| Codex | `${CODEX_HOME:-$HOME/.codex}/skills/cmc-skillhub-composer/` |
 | Claude Code | `$HOME/.claude/skills/cmc-skillhub-composer/` |
+| Codex | `$HOME/.agents/skills/cmc-skillhub-composer/` |
+| Cursor | `$HOME/.cursor/skills/cmc-skillhub-composer/` (also reads `~/.agents/skills/`) |
+| VS Code (Copilot) | `$HOME/.copilot/skills/cmc-skillhub-composer/` (also reads `~/.claude/skills/`, `~/.agents/skills/`) |
+| Hermes | `$HOME/.hermes/skills/cmc-skillhub-composer/` |
+| OpenClaw | `$HOME/.openclaw/skills/cmc-skillhub-composer/` (also reads `~/.agents/skills/`) |
+| Claude Desktop | No folder install — zip the `cmc-skillhub-composer/` folder and upload it via Settings -> Capabilities -> Skills |
+
+`$HOME/.agents/skills/` is a shared skills directory honored by Codex, Cursor, VS Code, and OpenClaw, so it works as a single target for those hosts.
 
 Install the contents of this directory into the skill folder:
 
@@ -82,14 +89,19 @@ Steps:
 
 1. Clone the repository into a temporary directory.
 2. Verify that `cmc-skillhub-composer/SKILL.md` exists and that its frontmatter name is `cmc-skillhub-composer`.
-3. Install `cmc-skillhub-composer/` as folder `cmc-skillhub-composer`.
-4. If you are running as Codex, install to `${CODEX_HOME:-$HOME/.codex}/skills/cmc-skillhub-composer/`.
-5. If you are running as Claude Code, install to `$HOME/.claude/skills/cmc-skillhub-composer/`.
-6. If both `$HOME/.codex` and `$HOME/.claude` exist, install to both locations.
-7. Copy only the contents of `cmc-skillhub-composer/`, preserving the `reference/` subdirectory.
-8. If an existing `cmc-skillhub-composer` folder is present, move it to a timestamped backup before installing.
-9. Do not install the repository root as the skill.
-10. After installation, report the installed path or paths and remind me to restart the host agent so it can load the skill.
+3. Install `cmc-skillhub-composer/` as folder `cmc-skillhub-composer` into the current host's skills directory:
+   - Claude Code: `$HOME/.claude/skills/`
+   - Codex: `$HOME/.agents/skills/`
+   - Cursor: `$HOME/.cursor/skills/`
+   - VS Code (Copilot): `$HOME/.copilot/skills/`
+   - Hermes: `$HOME/.hermes/skills/`
+   - OpenClaw: `$HOME/.openclaw/skills/`
+   - Claude Desktop: there is no folder install — zip the `cmc-skillhub-composer/` folder and upload it via Settings -> Capabilities -> Skills.
+   - If unsure which host you are, `$HOME/.agents/skills/` is honored by Codex, Cursor, VS Code, and OpenClaw.
+4. Copy only the contents of `cmc-skillhub-composer/`, preserving the `reference/` subdirectory.
+5. If an existing `cmc-skillhub-composer` folder is present, move it to a timestamped backup before installing.
+6. Do not install the repository root as the skill.
+7. After installation, report the installed path or paths and remind me to restart the host agent so it can load the skill.
 
 Use shell commands where appropriate. Stop and explain the error if the repository cannot be cloned or the expected skill directory is missing.
 ```
@@ -101,13 +113,15 @@ For Codex:
 ```bash
 tmp_dir="$(mktemp -d)"
 git clone --depth 1 https://github.com/openCMC/CMC-Skillhub-Composer "$tmp_dir"
-install_dir="${CODEX_HOME:-$HOME/.codex}/skills/cmc-skillhub-composer"
+install_dir="$HOME/.agents/skills/cmc-skillhub-composer"
 if [ -e "$install_dir" ]; then
   mv "$install_dir" "${install_dir}.bak.$(date +%Y%m%d%H%M%S)"
 fi
 mkdir -p "$install_dir"
 cp -R "$tmp_dir/cmc-skillhub-composer/." "$install_dir/"
 ```
+
+For other hosts (Cursor, VS Code, Hermes, OpenClaw), use the same steps with `install_dir` set to that host's path from the Compatibility table above. For Claude Desktop, zip `cmc-skillhub-composer/` and upload it via Settings -> Capabilities -> Skills instead.
 
 For Claude Code:
 
