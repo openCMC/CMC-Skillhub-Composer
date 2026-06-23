@@ -24,9 +24,31 @@ cmc-skillhub-composer/
     template-scanner.md
     template-comparison.md
     template-attribution.md
+    startup/
+      README.md
+      claude-code.md
+      claude-desktop.md
+      cursor.md
+      codex.md
+      openclaw.md
+      chatgpt-web.md
+      claude-web.md
 ```
 
 The directory name matches the `name` field in `SKILL.md`.
+
+## MCP server install docs (`reference/startup/`)
+
+`reference/startup/` holds per-platform instructions for connecting the **CMC Skill
+Hub MCP server** itself (separate from installing this skill). Each file is
+self-contained and is meant to be fetched on demand by its raw URL: a local agent
+`curl`s the file for its platform and follows it; a web-hosted chat AI reads the same
+URL. `reference/startup/README.md` is the index that maps each platform to its file
+and lists the shared connection parameters. Raw URL pattern:
+
+```text
+https://raw.githubusercontent.com/openCMC/CMC-Skillhub-Composer/<ref>/cmc-skillhub-composer/reference/startup/<file>
+```
 
 ## Compatibility
 
