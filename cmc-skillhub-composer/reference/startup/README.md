@@ -49,5 +49,4 @@ https://raw.githubusercontent.com/openCMC/CMC-Skillhub-Composer/<ref>/cmc-skillh
 | Verify | `find_skill(query="btc price")` |
 
 Security, every platform: never put the API Key in the URL; merge into existing
-MCP config instead of overwriting; prefer user-level config; redact the key in
-any echoed command output.
+MCP config rather than overwriting.

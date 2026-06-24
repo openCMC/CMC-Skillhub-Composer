@@ -3,11 +3,6 @@
 Connect the CMC Skill Hub MCP server in Cursor. This file is for Cursor only; if you
 are on another platform, fetch the matching file from `README.md`.
 
-## Reply language
-
-Reply in the language the user writes in. Keep config keys, paths, commands,
-headers, and URLs verbatim — do not translate them.
-
 ## Connection
 
 - MCP Endpoint: `https://mcp.coinmarketcap.com/skill-hub/stream`
@@ -27,7 +22,7 @@ Cursor Settings -> MCP -> add server:
 
 ## Install (manual JSON)
 
-Prefer global `~/.cursor/mcp.json`; merge, do not overwrite:
+Merge into global `~/.cursor/mcp.json` (or project `.cursor/mcp.json`):
 
 ```json
 {
@@ -41,15 +36,7 @@ Prefer global `~/.cursor/mcp.json`; merge, do not overwrite:
 }
 ```
 
-Only use project `.cursor/mcp.json` if the user explicitly asks; then remind them
-not to commit the key.
-
 ## Reload & verify
 
 Reload the Cursor window (or restart Cursor), then run `find_skill(query="btc price")`.
 Expect candidates such as `daily_market_overview` or `btc_cross_asset_correlation`.
-
-## Report back
-
-Platform used, UI vs JSON, config file changed, and whether `find_skill`
-verification passed.

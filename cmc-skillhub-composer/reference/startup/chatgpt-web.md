@@ -5,12 +5,6 @@ This file is for ChatGPT web only. Do not give local CLI, `mcp.json`, or termina
 commands. If you are a local agent, stop and tell the user to use the local install
 file instead.
 
-## Reply language
-
-Reply in the language the user writes in. Show UI labels in the user's language plus
-the exact button text. If the user writes Chinese, prefer the Chinese label (e.g.
-click `创建应用`); if English, use the English label (e.g. click `Create app`).
-
 ## Connection
 
 - Connector name: `CMC Skill Hub`
@@ -35,28 +29,19 @@ click `创建应用`); if English, use the English label (e.g. click `Create app
 
 If `Developer mode`, `Create app`, or a custom MCP app entry is not visible, stop and
 tell the user the setup cannot be completed from this ChatGPT account — it depends on
-plan, rollout, and admin/workspace permissions. Do not substitute local install
-commands.
+plan, rollout, and admin/workspace permissions.
 
 ## Authentication
 
-After `Create`, ChatGPT should redirect to a CoinMarketCap authorization page.
-Expected signals: the page is on a CoinMarketCap-owned domain (e.g.
-`pro.coinmarketcap.com`), it says it is authorizing a CoinMarketCap MCP server, it
-asks for an API Key, and the redirect points back to a trusted ChatGPT connector URL
-(e.g. `https://chatgpt.com/connector/oauth/...`). Have the user enter the API Key
-only on that page. Never put the key in chat or in the URL. If it does not redirect to
-a trusted CoinMarketCap page, stop and report the exact screen or error.
+After `Create`, ChatGPT should redirect to a CoinMarketCap authorization page. Confirm
+the page is on a CoinMarketCap-owned domain (e.g. `pro.coinmarketcap.com`) and the
+redirect points back to a trusted ChatGPT connector URL (e.g.
+`https://chatgpt.com/connector/oauth/...`), then have the user enter the API Key on
+that page. If it does not redirect to a trusted CoinMarketCap page, stop and report the
+exact screen.
 
 ## Enable & verify
 
-Enable the `CMC Skill Hub` app from the tool/app menu, start a new chat, then ask it
-to call `find_skill` with query `btc price`. Expect candidates such as
+Enable the `CMC Skill Hub` app from the tool/app menu, start a new chat, then ask it to
+call `find_skill` with query `btc price`. Expect candidates such as
 `daily_market_overview`, `crypto_macro_overview`, or `btc_cross_asset_correlation`.
-Do not treat form submission as success — verify after enabling.
-
-## Report back
-
-Detected platform, account/plan and role, whether the connector UI was visible, the
-auth flow, whether the enable/new-chat step happened, and the `find_skill` smoke
-result (pass / fail / blocked with the exact blocker).

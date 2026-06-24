@@ -4,11 +4,6 @@ Connect the CMC Skill Hub MCP server in Claude Desktop via the `mcp-remote` stdi
 bridge. This file is for Claude Desktop only; if you are on another platform, fetch
 the matching file from `README.md`.
 
-## Reply language
-
-Reply in the language the user writes in. Keep config keys, paths, commands,
-headers, and URLs verbatim — do not translate them.
-
 ## Connection
 
 - MCP Endpoint: `https://mcp.coinmarketcap.com/skill-hub/stream`
@@ -50,21 +45,15 @@ Notes:
   placeholder.
 - Do not add `--transport sse-only`. If a client still uses `/skill-hub/sse` as a
   compatibility URL, do not infer legacy SSE; `mcp-remote` connects http-first.
-- Merge into existing `mcpServers`; update only the `cmc-skill-hub` entry.
 
 ## Timeout
 
 Claude Desktop local MCP config has no documented per-tool execution timeout field.
 `mcp-remote --auth-timeout` only covers the OAuth callback, not tool execution. If
-long-running tools get cut off, report it as a Claude Desktop / bridge limitation,
-not a server-side MCP failure.
+long-running tools get cut off, it is a Claude Desktop / bridge limitation, not a
+server-side MCP failure.
 
 ## Reload & verify
 
 Fully quit and restart Claude Desktop, then run `find_skill(query="btc price")`.
 Expect candidates such as `daily_market_overview` or `btc_cross_asset_correlation`.
-
-## Report back
-
-Platform used, config file changed, that the `mcp-remote` stdio bridge was used,
-and whether `find_skill` verification passed.

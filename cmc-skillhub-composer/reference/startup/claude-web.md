@@ -5,11 +5,6 @@ Connect the CMC Skill Hub remote MCP service in Claude Chat web or Claude Cowork
 Claude Desktop local config, local JSON files, or terminal commands. If you are a
 local agent or Claude Desktop, stop and tell the user to use the matching local file.
 
-## Reply language
-
-Reply in the language the user writes in. Show UI labels in the user's language plus
-the exact button text so they can find the control.
-
 ## Connection
 
 - Connector name: `CMC Skill Hub`
@@ -48,11 +43,11 @@ Check first:
 ## Authentication
 
 After `Connect`, Claude opens an OAuth flow to a CoinMarketCap-owned domain (e.g.
-`pro.coinmarketcap.com`) that asks for the API Key, with a trusted callback such as
-`https://claude.ai/api/mcp/auth_callback`. Have the user enter the key only on that
-page; never in chat or in the URL. If Claude asks for an OAuth Client ID / Secret the
-owner did not provide, stop — do not invent credentials. If you see `Couldn't reach
-the MCP server`, a connection timeout, or missing auth metadata, stop and report it.
+`pro.coinmarketcap.com`) with a trusted callback such as
+`https://claude.ai/api/mcp/auth_callback`; have the user enter the key on that page. If
+Claude asks for an OAuth Client ID / Secret the owner did not provide, stop — do not
+invent credentials. If you see `Couldn't reach the MCP server`, a timeout, or missing
+auth metadata, stop and report it.
 
 ## Enable & verify
 
@@ -60,9 +55,3 @@ Enable `CMC Skill Hub` for the conversation via the chat `+` menu -> `Connectors
 reload the page or start a new chat. Then ask Claude to call `find_skill` with query
 `btc price`. Expect candidates such as `daily_market_overview`,
 `crypto_macro_overview`, or `btc_cross_asset_correlation`.
-
-## Report back
-
-Detected platform (Claude Chat web or Cowork), account/plan and role, connector
-visibility, the auth flow, the enable step, and the `find_skill` smoke result
-(pass / fail / blocked with the exact blocker).

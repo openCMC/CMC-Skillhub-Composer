@@ -3,11 +3,6 @@
 Connect the CMC Skill Hub MCP server in Codex. This file is for Codex CLI only; if
 you are on another platform, fetch the matching file from `README.md`.
 
-## Reply language
-
-Reply in the language the user writes in. Keep config keys, paths, commands,
-headers, and URLs verbatim — do not translate them.
-
 ## Connection
 
 - MCP Endpoint: `https://mcp.coinmarketcap.com/skill-hub/stream`
@@ -46,8 +41,3 @@ Start a new Codex session. Verify with `codex mcp get cmc-skill-hub`; it must sh
 `transport: streamable_http`, `http_headers: X-CMC-MCP-API-KEY=...`, and
 `tool_timeout_sec: 300`. Then run `find_skill(query="btc price")`. Expect candidates
 such as `daily_market_overview` or `btc_cross_asset_correlation`.
-
-## Report back
-
-Platform used, that `config.toml` was edited, the `codex mcp get` output (redacted),
-that the tool timeout is 300s, and whether `find_skill` verification passed.
