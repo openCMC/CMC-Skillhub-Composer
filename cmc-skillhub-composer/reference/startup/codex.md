@@ -28,10 +28,9 @@ X-CMC-MCP-API-KEY = "<API_KEY>"
 Notes:
 
 - Do not use an SSE stdio bridge for this endpoint.
-- Do not rely on `codex mcp add`: it is documented as stdio-only and does not
-  configure remote HTTP headers. As of Codex CLI 0.128.0 (checked 2026-06) there was
-  no custom header flag for `X-CMC-MCP-API-KEY`, so edit `config.toml` directly and
-  re-verify on newer versions.
+- `codex mcp add` can register a streamable_http URL, but it has no flag for a custom
+  header like `X-CMC-MCP-API-KEY` (only bearer-token auth), so set the header by editing
+  `config.toml` directly. (Checked Codex CLI 0.128.0, 2026-06; re-verify on newer versions.)
 - `tool_timeout_sec = 300` is the per-server MCP tool timeout; `startup_timeout_sec`
   only covers server startup.
 

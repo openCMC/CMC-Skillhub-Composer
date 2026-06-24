@@ -36,7 +36,8 @@ server startup. Restart Claude Code after changing these.
 
 ## Manual JSON (only if the CLI is unavailable)
 
-Merge into project `.mcp.json`:
+Merge into `~/.claude.json` for user scope (matching the CLI above), or project `.mcp.json`
+for project scope:
 
 ```json
 {
