@@ -55,3 +55,5 @@ Enable `CMC Skill Hub` for the conversation via the chat `+` menu -> `Connectors
 reload the page or start a new chat. Then ask Claude to call `find_skill` with query
 `btc price`. Expect candidates such as `daily_market_overview`,
 `crypto_macro_overview`, or `btc_cross_asset_correlation`.
+
+_Claude UI labels checked 2026-06; menu names may change in newer versions._

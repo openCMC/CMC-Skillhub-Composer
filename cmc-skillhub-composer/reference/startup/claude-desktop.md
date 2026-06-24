@@ -14,7 +14,11 @@ the matching file from `README.md`.
 
 ## Install
 
-Claude Desktop local MCP config launches local stdio processes, so bridge to the
+Newer Claude Desktop versions can add a remote MCP connector via OAuth directly under
+Settings -> Connectors (Add custom connector) — no JSON, no local key. If yours supports
+that, it is simpler than the `mcp-remote` bridge below; use it and skip to "Reload & verify".
+
+Otherwise, Claude Desktop local MCP config launches local stdio processes, so bridge to the
 remote endpoint with `mcp-remote`. Merge into:
 
 - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`

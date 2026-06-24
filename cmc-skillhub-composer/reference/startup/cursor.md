@@ -40,3 +40,5 @@ Merge into global `~/.cursor/mcp.json` (or project `.cursor/mcp.json`):
 
 Reload the Cursor window (or restart Cursor), then run `find_skill(query="btc price")`.
 Expect candidates such as `daily_market_overview` or `btc_cross_asset_correlation`.
+
+_UI labels checked 2026-06; menu names may differ in newer Cursor versions._
