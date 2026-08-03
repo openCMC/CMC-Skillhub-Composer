@@ -1,12 +1,12 @@
 ---
 name: cmc-skillhub-composer
-description: Discovers and runs CMC Crypto Skill Hub services through its MCP server (find_skill, execute_skill) and renders clean, chat-ready Markdown research. Use for crypto market and BTC/ETH analysis, ETF flows, onchain token and memecoin scans, derivatives and perp positioning, liquidations, portfolio exposure and PnL attribution, trading-cost comparison, crypto macro regime, and how BTC and crypto trade versus equities, DXY, gold, and rates. Not for standalone non-crypto questions.
+description: Discovers and runs CMC Crypto Skill Hub services through its MCP server (find_skill, execute_skill) and renders clean, chat-ready Markdown research. Use for crypto market and BTC/ETH analysis, ETF flows, onchain token and memecoin scans, derivatives and perp positioning, liquidations, portfolio exposure and PnL attribution, trading-cost comparison, crypto macro regime, U.S. equity index, sector and single-stock research, U.S. macro and rates context, prediction and event market analytics, and cross-asset reads between crypto, equities, DXY, gold, and rates. Standalone U.S. equity, U.S. macro, and prediction-market questions are in scope. Not for tasks outside markets.
 license: Apache-2.0
 ---
 
 # CMC Crypto Skill Hub
 
-Use this skill when the user asks for crypto market, BTC, ETH, ETF, derivatives, onchain, token, portfolio, scanner, macro-crypto, or crypto cross-asset research.
+Use this skill when the user asks for crypto market, BTC, ETH, ETF, derivatives, onchain, token, portfolio, or scanner research; for U.S. equity index, sector, theme, or single-stock research; for U.S. macro and rates context; for prediction and event market analytics; or for cross-asset reads between crypto, equities, and macro.
 
 CMC Crypto Skill Hub is a remote service registry exposed through an MCP server with two tools: `find_skill` (discover services and read their `input_schema`) and `execute_skill` (run one). These are platform services, not local files — discover and run them through the MCP tools; never try to read or execute a service yourself.
 
@@ -20,7 +20,9 @@ If both a production and a `*-beta` server are connected, prefer the production 
 
 ## When not to use
 
-For pure non-crypto tasks (weather, email, coding, standalone traditional equities), do not call CMC Crypto Skill Hub; answer with another capability. A traditional-market question asked as context for BTC or crypto is in scope.
+For tasks outside markets (weather, email, coding, general knowledge), do not call CMC Crypto Skill Hub; answer with another capability.
+
+Standalone U.S. equity, U.S. macro, and prediction-market questions **are** in scope — they no longer need a crypto framing. Coverage grows over time, so when a market question plausibly fits, call `find_skill` and let an empty result decide rather than declining up front.
 
 ## Operating principle
 
@@ -49,6 +51,8 @@ After a successful run, pick the report template with the Output Template Router
 - BTC ETF or institutional demand → the BTC ETF institutional demand service.
 - Broad crypto macro regime → the crypto macro overview service.
 - Macro news affecting BTC and equities → a macro news or cross-asset service.
+- U.S. equity index level, session facts, or trailing index returns → the U.S. equity index snapshot service.
+- U.S. equity sector or theme leadership and rotation → the U.S. equity sector rotation service. Do not substitute a crypto sector-rotation service; they cover different universes and `find_skill` may rank them close together.
 - Onchain scanner requests → inspect the schema first; if chain, time window, or candidate count is missing, ask before executing.
 
 ## Response normalization
